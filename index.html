@@ -7,7 +7,6 @@
     <title>Immersive Experience | GSAP</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Prevent Flash of Unstyled Content (FOUC) */
         body {
             opacity: 0;
             transition: opacity 0.5s ease;
@@ -38,6 +37,28 @@
                 </div>
             </section>
 
+            <section id="manifesto" class="manifesto manifesto-section">
+                <div class="manifesto-container manifesto__container">
+                    <p class="manifesto-text manifesto__text">
+                        We believe in digital craftsmanship.
+                        Every pixel serves a purpose, every interaction tells a story.
+                    </p>
+                </div>
+            </section>
+
+            <section id="marquee-section">
+                <div class="marquee-track">
+                    <span class="marquee-item">Strategy</span>
+                    <span class="marquee-item filled">Design</span>
+                    <span class="marquee-item">Development</span>
+                    <span class="marquee-item filled">Motion</span>
+                    <span class="marquee-item">Strategy</span>
+                    <span class="marquee-item filled">Design</span>
+                    <span class="marquee-item">Development</span>
+                    <span class="marquee-item filled">Motion</span>
+                </div>
+            </section>
+
             <section id="horizontal-gallery" class="horizontal-gallery gallery">
                 <div class="horizontal-gallery-wrapper gallery__wrapper">
                     <div class="horizontal-gallery-slide gallery__slide">
@@ -55,24 +76,12 @@
                     <div class="horizontal-gallery-slide gallery__slide">
                         <div class="horizontal-gallery-content gallery__content">
                             <div class="img-holder gallery__media">
-                                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1400&h=900&fit=crop"
-                                    class="horizontal-gallery-image gallery__image">
-                            </div>
-                            <div class="horizontal-gallery-text gallery__meta">
-                                <span class="gallery__meta-index">02</span>
-                                <h2 class="gallery__meta-title">Interface Design</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="horizontal-gallery-slide gallery__slide">
-                        <div class="horizontal-gallery-content gallery__content">
-                            <div class="img-holder gallery__media">
                                 <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1400&h=900&fit=crop"
                                     class="horizontal-gallery-image gallery__image">
                             </div>
                             <div class="horizontal-gallery-text gallery__meta">
-                                <span class="gallery__meta-index">03</span>
-                                <h2 class="gallery__meta-title">User Experience</h2>
+                                <span class="gallery__meta-index">02</span>
+                                <h2 class="gallery__meta-title">UX Design</h2>
                             </div>
                         </div>
                     </div>
@@ -83,22 +92,54 @@
                                     class="horizontal-gallery-image gallery__image">
                             </div>
                             <div class="horizontal-gallery-text gallery__meta">
-                                <span class="gallery__meta-index">04</span>
-                                <h2 class="gallery__meta-title">Development</h2>
+                                <span class="gallery__meta-index">03</span>
+                                <h2 class="gallery__meta-title">Motion</h2>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="manifesto" class="manifesto manifesto-section">
-                <div class="manifesto-container manifesto__container">
-                    <p class="manifesto-text manifesto__text">
-                        We believe in digital craftsmanship.
-                        Every pixel serves a purpose, every interaction tells a story.
-                        We don't just build websites; we engineer emotions and
-                        sculpt experiences that leave a lasting impression.
-                    </p>
+            <section id="wave-text" class="wave-section">
+                <h2 class="wave-title">FLUID<br>MOTION</h2>
+            </section>
+
+            <section id="sticky-process">
+                <div class="sticky-left">
+
+                    <div class="process-step">
+                        <span class="step-num">01</span>
+                        <h2 class="step-title">DISCOVERY</h2>
+                        <p class="step-desc">We dive deep into your brand's core values and market position to find the hidden gems.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <span class="step-num">02</span>
+                        <h2 class="step-title">STRATEGY</h2>
+                        <p class="step-desc">Crafting a roadmap that aligns business goals with user needs for maximum impact.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <span class="step-num">03</span>
+                        <h2 class="step-title">DESIGN</h2>
+                        <p class="step-desc">Visualizing the concept with high-fidelity UI/UX that breathes life into the strategy.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <span class="step-num">04</span>
+                        <h2 class="step-title">DEVELOP</h2>
+                        <p class="step-desc">Building robust, scalable solutions using cutting-edge technologies and best practices.</p>
+                    </div>
+
+                </div>
+
+                <div class="sticky-right">
+                    <div class="process-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1506765515384-028b60a970df?w=800&fit=crop" class="process-img">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&fit=crop" class="process-img">
+                        <img src="https://images.unsplash.com/photo-1558655146-d09347e0c766?w=800&fit=crop" class="process-img">
+                        <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&fit=crop" class="process-img">
+                    </div>
                 </div>
             </section>
 
@@ -109,19 +150,21 @@
                 <div class="stacking-cards-container stack__cards">
                     <div class="card stack__card" style="background-color: #1a1a1a;">
                         <div class="card-content stack__card-content">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=1600&fit=crop" class="card-image stack__card-image">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=1600&fit=crop"
+                                class="card-image stack__card-image">
                             <div class="card-text stack__card-text">
                                 <h3>Brand Identity</h3>
-                                <p>Reimagining the future of retail.</p>
+                                <p>Reimagining the future.</p>
                             </div>
                         </div>
                     </div>
                     <div class="card stack__card" style="background-color: #222;">
                         <div class="card-content stack__card-content">
-                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=1600&fit=crop" class="card-image stack__card-image">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=1600&fit=crop"
+                                class="card-image stack__card-image">
                             <div class="card-text stack__card-text">
                                 <h3>Web Design</h3>
-                                <p>Crafting digital experiences.</p>
+                                <p>Digital experiences.</p>
                             </div>
                         </div>
                     </div>
@@ -131,7 +174,7 @@
                                 class="card-image stack__card-image">
                             <div class="card-text stack__card-text">
                                 <h3>Development</h3>
-                                <p>Building robust applications.</p>
+                                <p>Robust applications.</p>
                             </div>
                         </div>
                     </div>
@@ -141,16 +184,12 @@
             <section id="kinetic-text" class="kinetic">
                 <div class="kinetic-container kinetic__container">
                     <h1 class="kinetic-title kinetic__title">BEYOND<br>LIMITS</h1>
-
-                    <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=600&q=80&fit=crop" class="kinetic-img kinetic__image k-img-1 kinetic__image--1">
-
-                    <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=600&q=80&fit=crop" class="kinetic-img kinetic__image k-img-2 kinetic__image--2">
-
-                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&q=80&fit=crop" class="kinetic-img kinetic__image k-img-3 kinetic__image--3">
-
-                    <img src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?w=600&q=80&fit=crop" class="kinetic-img kinetic__image k-img-4 kinetic__image--4">
-
-                    <img src="https://images.unsplash.com/photo-1604871000636-074fa5117945?w=600&q=80&fit=crop" class="kinetic-img kinetic__image k-img-5 kinetic__image--5">
+                    <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=600&q=80&fit=crop"
+                        class="kinetic-img kinetic__image k-img-1 kinetic__image--1">
+                    <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=600&q=80&fit=crop"
+                        class="kinetic-img kinetic__image k-img-2 kinetic__image--2">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&q=80&fit=crop"
+                        class="kinetic-img kinetic__image k-img-3 kinetic__image--3">
                 </div>
             </section>
 
@@ -163,8 +202,19 @@
                         </video>
                         <h1 class="text-mask-title final__title">THE END</h1>
                     </div>
+                    <div class="final__footer">
+                        <h2 class="footer-cta">LET'S WORK<br>TOGETHER</h2>
+                        <div class="footer-links">
+                            <a href="#" class="f-link">Email</a>
+                            <a href="#" class="f-link">Instagram</a>
+                        </div>
+                        <div class="footer-copyright">
+                            &copy; 2025 Creative Dev.
+                        </div>
+                    </div>
                 </div>
             </section>
+
         </div>
     </div>
 
@@ -173,7 +223,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
     <script src="https://unpkg.com/split-type"></script>
-
     <script type="module" src="./js/main.js"></script>
 </body>
 

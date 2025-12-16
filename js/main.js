@@ -1,7 +1,10 @@
 import { initSmoothScroll } from './utils/smoothScroll.js';
 import { initHero } from './sections/hero.js';
+import { initTextReveal } from './sections/textReveal.js'; // Manifesto
+import { initMarquee } from './sections/marquee.js'; // New
 import { initHorizontalGallery } from './sections/horizontal.js';
-import { initTextReveal } from './sections/textReveal.js'; // New Import
+import { initWaveText } from './sections/waveText.js';
+import { initSticky } from './sections/sticky.js'; // New
 import { initStackingCards } from './sections/stacking.js';
 import { initKineticText } from './sections/kinetic.js';
 import { initFooterReveal } from './sections/footer.js';
@@ -14,8 +17,11 @@ const initApp = () => {
 
     let ctx = gsap.context(() => {
         initHero();
-        initHorizontalGallery();
         initTextReveal();
+        initMarquee();
+        initHorizontalGallery();
+        initWaveText();
+        initSticky();
         initStackingCards();
         initKineticText();
         initFooterReveal();
