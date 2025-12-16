@@ -14,7 +14,7 @@ html, body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* --- SECTION 1: HERO --- */
+/* --- SECTION 1: HERO (BEM: .hero) --- */
 #hero {
     height: 100vh;
     width: 100%;
@@ -26,7 +26,8 @@ html, body {
     z-index: 10;
 }
 
-.hero-title {
+.hero-title,
+.hero__title {
     font-size: 10vw;
     line-height: 0.9;
     text-align: center;
@@ -44,7 +45,8 @@ html, body {
     transform-origin: bottom center;
 }
 
-.hero-zoom-container {
+.hero-zoom-container,
+.hero__zoom {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -55,7 +57,8 @@ html, body {
     pointer-events: none;
 }
 
-.hero-zoom-mask {
+.hero-zoom-mask,
+.hero__zoom-mask {
     width: 100%;
     height: 100%;
     border-radius: 50%;
@@ -63,13 +66,14 @@ html, body {
     will-change: transform;
 }
 
-.hero-zoom-video {
+.hero-zoom-video,
+.hero__zoom-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* --- SECTION 2: HORIZONTAL GALLERY --- */
+/* --- SECTION 2: HORIZONTAL GALLERY (BEM: .gallery) --- */
 #horizontal-gallery {
     height: 100vh;
     width: 100%;
@@ -79,13 +83,15 @@ html, body {
     background-color: #111;
 }
 
-.horizontal-gallery-wrapper {
+.horizontal-gallery-wrapper,
+.gallery__wrapper {
     display: flex;
     height: 100%;
     will-change: transform;
 }
 
-.horizontal-gallery-slide {
+.horizontal-gallery-slide,
+.gallery__slide {
     width: 100vw;
     height: 100vh;
     flex-shrink: 0;
@@ -96,7 +102,8 @@ html, body {
     position: relative;
 }
 
-.horizontal-gallery-content {
+.horizontal-gallery-content,
+.gallery__content {
     display: flex;
     flex-direction: column;
     gap: 3vh;
@@ -104,7 +111,8 @@ html, body {
     z-index: 2;
 }
 
-.img-holder {
+.img-holder,
+.gallery__media {
     width: 55vw;
     height: 35vw;
     max-height: 60vh;
@@ -113,34 +121,39 @@ html, body {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
-.horizontal-gallery-image {
+.horizontal-gallery-image,
+.gallery__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     will-change: transform;
 }
 
-.horizontal-gallery-text {
+.horizontal-gallery-text,
+.gallery__meta {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     width: 55vw;
 }
 
-.horizontal-gallery-text span {
+.horizontal-gallery-text span,
+.gallery__meta-index {
     font-size: 1rem;
     color: #666;
     font-family: monospace;
 }
 
-.horizontal-gallery-text h2 {
+.horizontal-gallery-text h2,
+.gallery__meta-title {
     font-size: 4vw;
     text-transform: uppercase;
     margin: 0;
     line-height: 1;
 }
 
-.gallery-progress-bar {
+.gallery-progress-bar,
+.gallery__progress {
     position: absolute;
     bottom: 50px;
     left: 10vw;
@@ -152,7 +165,7 @@ html, body {
     mix-blend-mode: difference;
 }
 
-/* --- NEW: MANIFESTO TEXT REVEAL --- */
+/* --- NEW: MANIFESTO TEXT REVEAL (BEM: .manifesto) --- */
 #manifesto {
     height: 100vh;
     width: 100%;
@@ -164,11 +177,13 @@ html, body {
     padding: 0 10vw;
 }
 
-.manifesto-container {
+.manifesto-container,
+.manifesto__container {
     max-width: 1200px;
 }
 
-.manifesto-text {
+.manifesto-text,
+.manifesto__text {
     font-size: clamp(2rem, 5vw, 4.5rem);
     line-height: 1.2;
     font-weight: 500;
@@ -176,12 +191,13 @@ html, body {
     text-align: left;
 }
 
-.manifesto-text .word {
+.manifesto-text .word,
+.manifesto__text .word {
     display: inline-block;
     margin-right: 0.3em;
 }
 
-/* --- SECTION 3: PARALLAX SPREAD --- */
+/* --- SECTION 3: PARALLAX SPREAD (BEM: .stack) --- */
 #stacking-cards {
     width: 100%;
     height: 100vh;
@@ -195,7 +211,8 @@ html, body {
     z-index: 5;
 }
 
-.stacking-header {
+.stacking-header,
+.stack__header {
     position: absolute;
     top: 5vh;
     width: 100%;
@@ -203,14 +220,16 @@ html, body {
     z-index: 10;
 }
 
-.stacking-header h2 {
+.stacking-header h2,
+.stack__title {
     font-size: 3rem;
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
 
-.stacking-cards-container {
+.stacking-cards-container,
+.stack__cards {
     position: relative;
     width: 100%;
     height: 100%;
@@ -219,7 +238,8 @@ html, body {
     align-items: center;
 }
 
-.card {
+.card,
+.stack__card {
     position: absolute;
     /* Still needed to stack initially */
     width: 30vw;
@@ -235,13 +255,15 @@ html, body {
     transform-origin: bottom center;
 }
 
-.card-content {
+.card-content,
+.stack__card-content {
     width: 100%;
     height: 100%;
     position: relative;
 }
 
-.card-image {
+.card-image,
+.stack__card-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -249,11 +271,13 @@ html, body {
 }
 
 /* Hover Effect for Interactivity */
-.card:hover .card-image {
+.card:hover .card-image,
+.stack__card:hover .stack__card-image {
     transform: scale(1.1);
 }
 
-.card-text {
+.card-text,
+.stack__card-text {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -265,16 +289,14 @@ html, body {
 
 /* Mobile Adjustments */
 @media (max-width: 768px) {
-    .card {
+    .card,
+    .stack__card {
         width: 60vw;
-        /* Wider on mobile */
         height: 45vh;
     }
-
-    /* On mobile, maybe spread vertically instead of horizontally if needed */
 }
 
-/* --- SECTION 4: FOOTER REVEAL --- */
+/* --- SECTION 4: FOOTER REVEAL (BEM: .final) --- */
 #section-4 {
     height: 100vh;
     width: 100%;
@@ -285,7 +307,8 @@ html, body {
     align-items: center;
 }
 
-.text-mask-container {
+.text-mask-container,
+.final__mask {
     position: relative;
     width: 100%;
     height: 100%;
@@ -294,7 +317,8 @@ html, body {
     align-items: center;
 }
 
-.text-mask-title {
+.text-mask-title,
+.final__title {
     font-size: 20vw;
     font-weight: 900;
     margin: 0;
@@ -306,7 +330,8 @@ html, body {
     will-change: color, mix-blend-mode;
 }
 
-.text-mask-video {
+.text-mask-video,
+.final__video {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -318,7 +343,7 @@ html, body {
     z-index: 1;
 }
 
-/* --- NEW: KINETIC TEXT PARALLAX --- */
+/* --- NEW: KINETIC TEXT PARALLAX (BEM: .kinetic) --- */
 #kinetic-text {
     width: 100%;
     height: 100vh;
@@ -331,7 +356,8 @@ html, body {
     z-index: 5;
 }
 
-.kinetic-container {
+.kinetic-container,
+.kinetic__container {
     position: relative;
     width: 100%;
     height: 100%;
@@ -341,7 +367,8 @@ html, body {
 }
 
 /* Giant Text Styling */
-.kinetic-title {
+.kinetic-title,
+.kinetic__title {
     font-size: 15vw;
     /* Huge Text */
     font-weight: 900;
@@ -366,7 +393,8 @@ html, body {
 }
 
 /* Floating Images */
-.kinetic-img {
+.kinetic-img,
+.kinetic__image {
     position: absolute;
     width: 20vw;
     height: 25vw;
@@ -379,7 +407,8 @@ html, body {
 }
 
 /* Position images randomly */
-.k-img-1 {
+.k-img-1,
+.kinetic__image--1 {
     left: 10%;
     top: 60%;
     width: 15vw;
@@ -388,21 +417,24 @@ html, body {
     /* Behind text */
 }
 
-.k-img-2 {
+.k-img-2,
+.kinetic__image--2 {
     right: 15%;
     top: 70%;
     width: 18vw;
     height: 24vw;
 }
 
-.k-img-3 {
+.k-img-3,
+.kinetic__image--3 {
     left: 25%;
     top: 80%;
     width: 22vw;
     height: 15vw;
 }
 
-.k-img-4 {
+.k-img-4,
+.kinetic__image--4 {
     right: 30%;
     top: 50%;
     width: 12vw;
@@ -410,7 +442,8 @@ html, body {
     z-index: 1;
 }
 
-.k-img-5 {
+.k-img-5,
+.kinetic__image--5 {
     left: 50%;
     top: 90%;
     transform: translateX(-50%);
