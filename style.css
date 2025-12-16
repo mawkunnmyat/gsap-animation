@@ -1,0 +1,501 @@
+/* Modern CSS Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #000;
+    background-color: #000; /* Start with dark background */
+    overflow-x: hidden;
+    transition: background-color 0.3s ease;
+}
+
+/* Smooth Scroll Wrapper */
+#smooth-wrapper {
+    overflow: hidden;
+    position: relative;
+    z-index: 0; /* Base stacking context */
+}
+
+#smooth-content {
+    /* Content styles */
+    transform-origin: center center;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    position: relative;
+    z-index: 0;
+}
+
+/* Hero Section - Zoom-Through */
+#hero {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background-color: #000;
+    isolation: isolate; /* Create new stacking context */
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 12vw, 12rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1.1;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    will-change: opacity;
+}
+
+/* Hero Zoom Container - Central element that scales */
+.hero-zoom-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    z-index: 1;
+    will-change: transform;
+}
+
+/* Hero Zoom Mask - Circular mask for video */
+.hero-zoom-mask {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    clip-path: circle(50%);
+    -webkit-clip-path: circle(50%);
+}
+
+.hero-zoom-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(1);
+    transform-origin: center center;
+}
+
+.hero-zoom-fallback {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Show fallback if video doesn't load */
+.hero-zoom-video:not([src]) ~ .hero-zoom-fallback,
+.hero-zoom-mask:has(.hero-zoom-video:not([src])) .hero-zoom-fallback {
+    opacity: 1;
+}
+
+/* SplitType Line Containers - Overflow Hidden for Mask Effect */
+.hero-title .line {
+    overflow: hidden;
+    display: inline-block;
+}
+
+/* SplitType Character Containers */
+.hero-title .char {
+    display: inline-block;
+    transform-origin: center bottom;
+}
+
+/* Section 4 - Background Transition & Text Mask */
+#section-4 {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent; /* Transparent so body background shows through */
+    isolation: isolate; /* Create new stacking context */
+    z-index: 4;
+}
+
+.section-4-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+}
+
+.text-mask-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+}
+
+.text-mask-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    opacity: 0;
+    will-change: opacity;
+    z-index: 1; /* Behind text */
+}
+
+.text-mask-title {
+    font-size: clamp(8rem, 25vw, 25rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1;
+    margin: 0;
+    position: relative;
+    z-index: 2; /* Above video */
+    
+    /* Text mask effect using background-clip */
+    /* Video will be positioned behind and show through text */
+    background: linear-gradient(45deg, #fff, #fff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    
+    /* Fallback: white text when video not visible */
+    text-shadow: 0 0 0 rgba(255, 255, 255, 0.3);
+    will-change: opacity;
+}
+
+/* When video is visible, use mix-blend-mode to show video through text */
+.text-mask-container:has(.text-mask-video[style*="opacity: 1"]) .text-mask-title {
+    mix-blend-mode: screen;
+    background: none;
+    -webkit-text-fill-color: #fff;
+    color: #fff;
+}
+
+/* Stacking Cards Section */
+#stacking-cards {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-color: #0a0a0a;
+    isolation: isolate; /* Create new stacking context */
+    z-index: 3;
+}
+
+.stacking-cards-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+}
+
+.card {
+    position: absolute;
+    width: 80%;
+    max-width: 600px;
+    height: 80vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    will-change: transform, filter;
+    /* Z-index will be set dynamically via GSAP */
+}
+
+.card-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    background-color: #1a1a1a;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 4vh 4vw;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    color: #fff;
+}
+
+.card-text h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 1vh;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.card-text p {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Horizontal Scroll Gallery Section */
+#horizontal-gallery {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-color: #0a0a0a;
+    isolation: isolate; /* Create new stacking context */
+    z-index: 2;
+}
+
+.horizontal-gallery-wrapper {
+    width: 300vw; /* 3-4 full-screen slides */
+    height: 100%;
+    display: flex;
+    will-change: transform;
+}
+
+.horizontal-gallery-slide {
+    width: 100vw;
+    height: 100vh;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.horizontal-gallery-content {
+    width: 90%;
+    max-width: 1400px;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    position: relative;
+}
+
+.horizontal-gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    will-change: transform;
+    transform-origin: center center;
+}
+
+.horizontal-gallery-text {
+    color: #fff;
+    text-align: center;
+}
+
+.horizontal-gallery-text h2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1vh;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.horizontal-gallery-text p {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Selected Works Section - Cinema-Style Reveal */
+.selected-works {
+    width: 100%;
+    padding: 15vh 0;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.selected-works-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 5vw;
+}
+
+.selected-works-item {
+    width: 100%;
+    margin-bottom: 20vh;
+    position: relative;
+}
+
+.selected-works-item:last-child {
+    margin-bottom: 0;
+}
+
+.selected-works-image-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    /* Initial clip-path state: thin line (50% top, 50% bottom hidden) */
+    clip-path: inset(50% 0 50% 0);
+    will-change: clip-path;
+}
+
+.selected-works-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* Initial scale state: zoomed in */
+    transform: scale(1.5);
+    transform-origin: center center;
+    will-change: transform;
+}
+
+/* Kinetic Typography Marquee Separator */
+.marquee-separator {
+    width: 100%;
+    padding: 8vh 0;
+    background-color: #000;
+    overflow: hidden;
+    position: relative;
+}
+
+.marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.marquee-content {
+    display: flex;
+    white-space: nowrap;
+    will-change: transform;
+}
+
+.marquee-text {
+    display: inline-block;
+    font-size: clamp(2rem, 8vw, 8rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 0 2vw;
+    flex-shrink: 0;
+}
+
+/* Projects Section */
+.projects {
+    width: 100%;
+    padding: 10vh 5vw;
+    background-color: #fff;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 4vw;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.project-item {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    position: relative;
+}
+
+.project-image-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    will-change: transform;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+ul, ol {
+    list-style: none;
+}
+
