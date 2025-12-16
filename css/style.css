@@ -8,7 +8,6 @@
 html, body {
     width: 100%;
     overflow-x: hidden;
-    /* Crucial for horizontal scroll sections */
     background-color: #050505;
     color: #fff;
     font-family: 'Neue Montreal', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -35,10 +34,8 @@ html, body {
     font-weight: 800;
     z-index: 2;
     mix-blend-mode: difference;
-    /* Ensures text is visible over video */
 }
 
-/* SplitType helpers */
 .line {
     overflow: hidden;
 }
@@ -63,7 +60,6 @@ html, body {
     height: 100%;
     border-radius: 50%;
     overflow: hidden;
-    /* Hardware acceleration */
     will-change: transform;
 }
 
@@ -77,10 +73,10 @@ html, body {
 #horizontal-gallery {
     height: 100vh;
     width: 100%;
-    /* JS will calculate inner wrapper width */
     overflow: hidden;
     position: relative;
     z-index: 5;
+    background-color: #111;
 }
 
 .horizontal-gallery-wrapper {
@@ -97,28 +93,30 @@ html, body {
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    position: relative;
 }
 
 .horizontal-gallery-content {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3vh;
+    position: relative;
+    z-index: 2;
 }
 
 .img-holder {
-    width: 60vw;
-    height: 40vw;
-    max-height: 70vh;
+    width: 55vw;
+    height: 35vw;
+    max-height: 60vh;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 4px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
 .horizontal-gallery-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scale(1.2);
-    /* For parallax effect inside */
     will-change: transform;
 }
 
@@ -126,66 +124,154 @@ html, body {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    font-size: 2rem;
-    text-transform: uppercase;
+    width: 55vw;
 }
 
-/* --- SECTION 3: STACKING CARDS --- */
-#stacking-cards {
-    /* Height is controlled by ScrollTrigger pinning */
+.horizontal-gallery-text span {
+    font-size: 1rem;
+    color: #666;
+    font-family: monospace;
+}
+
+.horizontal-gallery-text h2 {
+    font-size: 4vw;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1;
+}
+
+.gallery-progress-bar {
+    position: absolute;
+    bottom: 50px;
+    left: 10vw;
+    width: 80vw;
+    height: 2px;
+    background-color: #fff;
+    z-index: 10;
+    pointer-events: none;
+    mix-blend-mode: difference;
+}
+
+/* --- NEW: MANIFESTO TEXT REVEAL --- */
+#manifesto {
+    height: 100vh;
     width: 100%;
-    background-color: #0a0a0a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #050505;
+    z-index: 5;
+    padding: 0 10vw;
+}
+
+.manifesto-container {
+    max-width: 1200px;
+}
+
+.manifesto-text {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    line-height: 1.2;
+    font-weight: 500;
+    color: #fff;
+    text-align: left;
+}
+
+.manifesto-text .word {
+    display: inline-block;
+    margin-right: 0.3em;
+}
+
+/* --- SECTION 3: PARALLAX SPREAD --- */
+#stacking-cards {
+    width: 100%;
+    height: 100vh;
+    background-color: #080808;
     position: relative;
-    padding-top: 10vh;
-    padding-bottom: 10vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     z-index: 5;
 }
 
 .stacking-header {
+    position: absolute;
+    top: 5vh;
+    width: 100%;
     text-align: center;
-    margin-bottom: 5vh;
+    z-index: 10;
+}
+
+.stacking-header h2 {
     font-size: 3rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
 
 .stacking-cards-container {
     position: relative;
     width: 100%;
-    height: 80vh;
-    /* Viewport for the cards */
+    height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .card {
     position: absolute;
-    top: 0;
-    width: 80vw;
-    max-width: 600px;
-    height: 70vh;
-    border-radius: 20px;
+    /* Still needed to stack initially */
+    width: 30vw;
+    /* Smaller width to allow spreading */
+    max-width: 400px;
+    height: 50vh;
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    will-change: transform, filter;
-    transform-origin: top center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    background-color: #1a1a1a;
+    will-change: transform, opacity;
+    /* Important: Origin at bottom center for fanning effect */
+    transform-origin: bottom center;
 }
 
 .card-content {
-    position: relative;
     width: 100%;
     height: 100%;
+    position: relative;
 }
 
 .card-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Hover Effect for Interactivity */
+.card:hover .card-image {
+    transform: scale(1.1);
 }
 
 .card-text {
     position: absolute;
-    bottom: 2rem;
-    left: 2rem;
-    z-index: 2;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    color: #fff;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .card {
+        width: 60vw;
+        /* Wider on mobile */
+        height: 45vh;
+    }
+
+    /* On mobile, maybe spread vertically instead of horizontally if needed */
 }
 
 /* --- SECTION 4: FOOTER REVEAL --- */
@@ -194,7 +280,6 @@ html, body {
     width: 100%;
     position: relative;
     z-index: 20;
-    /* Must be on top for reveal */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -231,4 +316,116 @@ html, body {
     object-fit: cover;
     opacity: 0;
     z-index: 1;
+}
+
+/* --- NEW: KINETIC TEXT PARALLAX --- */
+#kinetic-text {
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+.kinetic-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Giant Text Styling */
+.kinetic-title {
+    font-size: 15vw;
+    /* Huge Text */
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.8;
+    text-align: center;
+    margin: 0;
+    z-index: 2;
+    /* Sit between images */
+
+    /* Hollow Text Effect */
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.3);
+
+    /* Fill Animation Prep */
+    background: linear-gradient(to bottom, #fff 50%, transparent 50%);
+    background-size: 100% 200%;
+    background-position: 0% 100%;
+    /* Start hidden */
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+/* Floating Images */
+.kinetic-img {
+    position: absolute;
+    width: 20vw;
+    height: 25vw;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    z-index: 3;
+    /* On top of text (mostly) */
+    will-change: transform;
+}
+
+/* Position images randomly */
+.k-img-1 {
+    left: 10%;
+    top: 60%;
+    width: 15vw;
+    height: 20vw;
+    z-index: 1;
+    /* Behind text */
+}
+
+.k-img-2 {
+    right: 15%;
+    top: 70%;
+    width: 18vw;
+    height: 24vw;
+}
+
+.k-img-3 {
+    left: 25%;
+    top: 80%;
+    width: 22vw;
+    height: 15vw;
+}
+
+.k-img-4 {
+    right: 30%;
+    top: 50%;
+    width: 12vw;
+    height: 18vw;
+    z-index: 1;
+}
+
+.k-img-5 {
+    left: 50%;
+    top: 90%;
+    transform: translateX(-50%);
+    width: 25vw;
+    height: 15vw;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .kinetic-title {
+        font-size: 20vw;
+    }
+
+    .kinetic-img {
+        width: 40vw;
+        height: 50vw;
+    }
 }

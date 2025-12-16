@@ -1,61 +1,113 @@
 export function initHorizontalGallery() {
     const section = document.querySelector('#horizontal-gallery');
-    const wrapper = document.querySelector('.horizontal-gallery-wrapper');
-    const slides = document.querySelectorAll('.horizontal-gallery-slide');
-    const images = document.querySelectorAll('.horizontal-gallery-image');
 
-    if (!section || slides.length === 0) return;
+    if (!section) return;
+
+    const wrapper = section.querySelector('.horizontal-gallery-wrapper');
+    const slides = section.querySelectorAll('.horizontal-gallery-slide');
+    const images = section.querySelectorAll('.horizontal-gallery-image');
+    const texts = section.querySelectorAll('.horizontal-gallery-text');
+
+    // Progress Bar Setup
+    let progressBar = section.querySelector('.gallery-progress-bar');
+    if (!progressBar) {
+        progressBar = document.createElement('div');
+        progressBar.classList.add('gallery-progress-bar');
+        section.appendChild(progressBar);
+    }
 
     const slideCount = slides.length;
 
-    // 1. Dynamic Width Calculation
-    // Ensure wrapper is wide enough for all slides
+    // 1. Setup Layout
     gsap.set(wrapper, { width: `${slideCount * 100}vw` });
+    gsap.set(progressBar, { scaleX: 0, transformOrigin: "left center" });
 
-    // 2. Main Horizontal Scroll
-    const scrollTween = gsap.to(wrapper, {
-        xPercent: -100 * (slideCount - 1),
-        ease: "none",
+    // Function to calculate the exact scroll distance needed
+    // (Total Width - Viewport Width) = Amount we need to move left
+    const getScrollAmount = () => {
+        return -(wrapper.scrollWidth - window.innerWidth);
+    };
+
+    // 2. Main Horizontal Scroll Timeline
+    const scrollTl = gsap.timeline({
         scrollTrigger: {
             trigger: section,
             pin: true,
             scrub: 1,
             start: "top top",
-            // Scroll amount = number of slides * viewport height
-            end: `+=${slideCount * 100}vh`,
+            // Making it SLOWER/SMOOTHER (Increased distance)
+            end: `+=${slideCount * 150}vh`,
             invalidateOnRefresh: true,
+            onUpdate: (self) => {
+                gsap.to(progressBar, {
+                    scaleX: self.progress,
+                    duration: 0.1,
+                    ease: "none"
+                });
+            }
         }
     });
 
-    // 3. Image Parallax (Inside the frames)
-    // As we scroll horizontally, move images inside their containers
-    slides.forEach((slide, i) => {
-        const img = images[i];
-        gsap.to(img, {
-            xPercent: 15, // Move image slightly inside frame
-            ease: "none",
-            scrollTrigger: {
-                trigger: section,
-                start: "top top",
-                end: `+=${slideCount * 100}vh`,
-                scrub: true,
-                containerAnimation: scrollTween // Hook into horizontal tween
-            }
-        });
+    // FIX: Use 'x' instead of 'xPercent' for accurate pixel movement
+    // This stops exactly at the last slide
+    scrollTl.to(wrapper, {
+        x: getScrollAmount,
+        ease: "none",
     });
 
-    // 4. Velocity Skew (The "Jelly" Effect)
-    // Using quickTo for performance
-    const skewTo = gsap.quickTo(images, "skewX", { duration: 0.1, ease: "power3" });
+    // 3. Creative Parallax Effects
+    slides.forEach((slide, i) => {
+        const img = images[i];
+        const text = texts[i];
+
+        // Image Parallax
+        if (img) {
+            gsap.fromTo(img,
+                { xPercent: -15, scale: 1.2 },
+                {
+                    xPercent: 15,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top top",
+                        end: `+=${slideCount * 150}vh`,
+                        scrub: true,
+                        containerAnimation: scrollTl
+                    }
+                }
+            );
+        }
+
+        // Text Parallax
+        if (text) {
+            gsap.fromTo(text,
+                { x: 50, opacity: 0.5 },
+                {
+                    x: -50,
+                    opacity: 1,
+                    ease: "power1.out",
+                    scrollTrigger: {
+                        trigger: slide,
+                        containerAnimation: scrollTl,
+                        start: "left center",
+                        end: "right center",
+                        scrub: true,
+                    }
+                }
+            );
+        }
+    });
+
+    // 4. Velocity Skew (Subtle Effect)
+    const skewTo = gsap.quickTo(images, "skewX", { duration: 0.2, ease: "power3.out" });
 
     ScrollTrigger.create({
         trigger: section,
         start: "top top",
         end: "bottom bottom",
         onUpdate: (self) => {
-            // Get velocity, divide to make it subtle, clamp to avoid breaking
-            let skew = self.getVelocity() / -300;
-            skew = gsap.utils.clamp(-10, 10, skew);
+            let skew = self.getVelocity() / -400;
+            skew = gsap.utils.clamp(-5, 5, skew);
             skewTo(skew);
         }
     });

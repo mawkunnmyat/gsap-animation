@@ -1,48 +1,52 @@
 export function initStackingCards() {
     const section = document.querySelector('#stacking-cards');
+    const container = document.querySelector('.stacking-cards-container');
     const cards = document.querySelectorAll('.card');
 
     if (!section || cards.length === 0) return;
 
-    // 1. Set Initial States
-    // Place all cards absolutely positioned in the center, but pushed down slightly
+    // 1. Initial Setup: Place cards in center but prepared to spread
+    // No rotation initially, just stacked beautifully
     gsap.set(cards, {
-        y: window.innerHeight, // Start below screen
-        scale: 1.1,
-        rotate: 0
+        xPercent: 0,
+        yPercent: 100, // Start from bottom
+        rotation: 0,
+        scale: 0.8,
+        opacity: 0
     });
 
-    // 2. Create Stacking Logic
-    // We pin the container, and manually animate each card
+    const cardCount = cards.length;
+
+    // 2. Main Scroll Timeline
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: `+=${cards.length * 100}%`, // Scroll distance based on card count
+            end: `+=${cardCount * 100}%`, // Scroll distance
             pin: true,
             scrub: 1,
         }
     });
 
+    // 3. Animation: Cards come up and spread out
     cards.forEach((card, index) => {
-        // Animate Card Up
-        tl.to(card, {
-            y: 0,
-            scale: 1,
-            ease: window.heavyEase,
-            duration: 1,
-            // Add slight rotation for randomness
-            rotate: (index % 2 === 0 ? -2 : 2)
-        });
+        // Calculate spread position based on index
+        // e.g., if 3 cards: -30%, 0%, +30%
+        const spreadAmount = 30; // Percentage to spread apart
+        const centerOffset = (cardCount - 1) / 2;
+        const xPos = (index - centerOffset) * spreadAmount;
 
-        // Effect on Previous Card (Depth)
-        if (index > 0) {
-            tl.to(cards[index - 1], {
-                scale: 0.90, // Scale down previous
-                filter: "brightness(0.6)", // Darken previous
-                y: -50, // Move up slightly
-                duration: 1
-            }, "<"); // Run at same time as current card enters
-        }
+        // Slight rotation for natural feel
+        const rotationAmount = (index - centerOffset) * 5;
+
+        tl.to(card, {
+            yPercent: 0,    // Come up to center
+            xPercent: xPos, // Spread horizontally
+            rotation: rotationAmount, // Fan out
+            scale: 1,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out"
+        }, index * 0.2); // Stagger the start time slightly
     });
 }
