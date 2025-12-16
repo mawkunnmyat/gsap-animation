@@ -4,216 +4,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Landing Page</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Immersive Experience | GSAP</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Prevent Flash of Unstyled Content (FOUC) */
+        body {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        body.loaded {
+            opacity: 1;
+            pointer-events: all;
+        }
+    </style>
 </head>
 
 <body>
+
     <div id="smooth-wrapper">
         <div id="smooth-content">
-            <!-- Hero Section - Zoom-Through -->
+
             <section id="hero" class="hero">
-                <h1 class="hero-title" data-split="lines,chars">CREATIVE DEVELOPER</h1>
+                <h1 class="hero-title" data-split="lines,chars">CREATIVE<br>DEVELOPER</h1>
                 <div class="hero-zoom-container">
                     <div class="hero-zoom-mask">
                         <video class="hero-zoom-video" autoplay muted loop playsinline>
-                            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                                type="video/mp4">
                         </video>
-                        <!-- Fallback image if video doesn't load -->
-                        <img src="https://images.unsplash.com/photo-1557683316-973673baf926?w=800&h=800&fit=crop" alt="Hero Zoom" class="hero-zoom-fallback">
                     </div>
                 </div>
             </section>
 
-            <!-- Horizontal Scroll Gallery Section -->
             <section id="horizontal-gallery" class="horizontal-gallery">
                 <div class="horizontal-gallery-wrapper">
                     <div class="horizontal-gallery-slide">
                         <div class="horizontal-gallery-content">
-                            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1400&h=900&fit=crop" alt="Project 1" class="horizontal-gallery-image">
+                            <div class="img-holder">
+                                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1400&h=900&fit=crop"
+                                    class="horizontal-gallery-image">
+                            </div>
                             <div class="horizontal-gallery-text">
-                                <h2>Project One</h2>
-                                <p>Creative Development</p>
+                                <span>01</span>
+                                <h2>Digital Art</h2>
                             </div>
                         </div>
                     </div>
                     <div class="horizontal-gallery-slide">
                         <div class="horizontal-gallery-content">
-                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1400&h=900&fit=crop" alt="Project 2" class="horizontal-gallery-image">
+                            <div class="img-holder">
+                                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1400&h=900&fit=crop"
+                                    class="horizontal-gallery-image">
+                            </div>
                             <div class="horizontal-gallery-text">
-                                <h2>Project Two</h2>
-                                <p>Innovative Design</p>
+                                <span>02</span>
+                                <h2>Interface Design</h2>
                             </div>
                         </div>
                     </div>
                     <div class="horizontal-gallery-slide">
                         <div class="horizontal-gallery-content">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&h=900&fit=crop" alt="Project 3" class="horizontal-gallery-image">
+                            <div class="img-holder">
+                                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1400&h=900&fit=crop"
+                                    class="horizontal-gallery-image">
+                            </div>
                             <div class="horizontal-gallery-text">
-                                <h2>Project Three</h2>
-                                <p>Award Winning</p>
+                                <span>03</span>
+                                <h2>User Experience</h2>
                             </div>
                         </div>
                     </div>
                     <div class="horizontal-gallery-slide">
                         <div class="horizontal-gallery-content">
-                            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1400&h=900&fit=crop" alt="Project 4" class="horizontal-gallery-image">
+                            <div class="img-holder">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&h=900&fit=crop"
+                                    class="horizontal-gallery-image">
+                            </div>
                             <div class="horizontal-gallery-text">
-                                <h2>Project Four</h2>
-                                <p>Bold Vision</p>
+                                <span>04</span>
+                                <h2>Development</h2>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Stacking Cards Section -->
             <section id="stacking-cards" class="stacking-cards">
+                <div class="stacking-header">
+                    <h2>SELECTED WORKS</h2>
+                </div>
                 <div class="stacking-cards-container">
-                    <div class="card">
+                    <div class="card" style="background-color: #1a1a1a;">
                         <div class="card-content">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=1600&fit=crop" alt="Card 1" class="card-image">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=1600&fit=crop" class="card-image">
                             <div class="card-text">
-                                <h2>Card One</h2>
-                                <p>Creative Excellence</p>
+                                <h3>Brand Identity</h3>
+                                <p>Reimagining the future of retail.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card" style="background-color: #222;">
                         <div class="card-content">
-                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=1600&fit=crop" alt="Card 2" class="card-image">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=1600&fit=crop" class="card-image">
                             <div class="card-text">
-                                <h2>Card Two</h2>
-                                <p>Innovative Solutions</p>
+                                <h3>Web Design</h3>
+                                <p>Crafting digital experiences.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card" style="background-color: #2a2a2a;">
                         <div class="card-content">
-                            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&h=1600&fit=crop" alt="Card 3" class="card-image">
+                            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&h=1600&fit=crop"
+                                class="card-image">
                             <div class="card-text">
-                                <h2>Card Three</h2>
-                                <p>Bold Design</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=1600&fit=crop" alt="Card 4" class="card-image">
-                            <div class="card-text">
-                                <h2>Card Four</h2>
-                                <p>Award Winning</p>
+                                <h3>Development</h3>
+                                <p>Building robust applications.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Section 4 - Background Transition & Text Mask -->
             <section id="section-4" class="section-4">
                 <div class="section-4-content">
                     <div class="text-mask-container">
                         <video class="text-mask-video" autoplay muted loop playsinline>
-                            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                                type="video/mp4">
                         </video>
                         <h1 class="text-mask-title">THE END</h1>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Selected Works Section -->
-            <section class="selected-works">
-                <div class="selected-works-container">
-                    <div class="selected-works-item">
-                        <div class="selected-works-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1557683316-973673baf926?w=1400&h=900&fit=crop" alt="Selected Work 1" class="selected-works-image">
-                        </div>
-                    </div>
-                    <div class="selected-works-item">
-                        <div class="selected-works-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1558655146-364adaf1fcc9?w=1400&h=900&fit=crop" alt="Selected Work 2" class="selected-works-image">
-                        </div>
-                    </div>
-                    <div class="selected-works-item">
-                        <div class="selected-works-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1400&h=900&fit=crop" alt="Selected Work 3" class="selected-works-image">
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Kinetic Typography Marquee Separator -->
-            <section class="marquee-separator">
-                <div class="marquee-wrapper">
-                    <div class="marquee-content">
-                        <span class="marquee-text">CREATIVE DEVELOPER • AWARD WINNING • INNOVATIVE • BOLD • CREATIVE DEVELOPER • AWARD WINNING • INNOVATIVE • BOLD •</span>
-                        <span class="marquee-text" aria-hidden="true">CREATIVE DEVELOPER • AWARD WINNING • INNOVATIVE • BOLD • CREATIVE DEVELOPER • AWARD WINNING • INNOVATIVE • BOLD •</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Projects Section -->
-            <section class="projects">
-                <div class="projects-grid">
-                    <div class="project-item">
-                        <div class="project-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&h=800&fit=crop" alt="Project 1"
-                                class="project-image">
-                        </div>
-                    </div>
-                    <div class="project-item">
-                        <div class="project-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=800&fit=crop" alt="Project 2"
-                                class="project-image">
-                        </div>
-                    </div>
-                    <div class="project-item">
-                        <div class="project-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop" alt="Project 3"
-                                class="project-image">
-                        </div>
-                    </div>
-                    <div class="project-item">
-                        <div class="project-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&h=800&fit=crop" alt="Project 4"
-                                class="project-image">
-                        </div>
-                    </div>
-                    <div class="project-item">
-                        <div class="project-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop" alt="Project 5"
-                                class="project-image">
-                        </div>
-                    </div>
-                    <div class="project-item">
-                        <div class="project-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=800&fit=crop" alt="Project 6"
-                                class="project-image">
-                        </div>
                     </div>
                 </div>
             </section>
         </div>
     </div>
 
-    <!-- GSAP Core -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-
-    <!-- GSAP ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    
-    <!-- GSAP CustomEase -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
-    
-    <!-- Lenis Smooth Scroll -->
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
-
-    <!-- SplitType for Text Splitting -->
     <script src="https://unpkg.com/split-type"></script>
 
-    <!-- Main JavaScript -->
-    <script src="main.js"></script>
+    <script type="module" src="./js/main.js"></script>
 </body>
 
 </html>

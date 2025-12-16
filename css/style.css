@@ -1,0 +1,234 @@
+/* Base Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    /* Crucial for horizontal scroll sections */
+    background-color: #050505;
+    color: #fff;
+    font-family: 'Neue Montreal', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- SECTION 1: HERO --- */
+#hero {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.hero-title {
+    font-size: 10vw;
+    line-height: 0.9;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 800;
+    z-index: 2;
+    mix-blend-mode: difference;
+    /* Ensures text is visible over video */
+}
+
+/* SplitType helpers */
+.line {
+    overflow: hidden;
+}
+
+.char {
+    transform-origin: bottom center;
+}
+
+.hero-zoom-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30vw;
+    height: 30vw;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-zoom-mask {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    /* Hardware acceleration */
+    will-change: transform;
+}
+
+.hero-zoom-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- SECTION 2: HORIZONTAL GALLERY --- */
+#horizontal-gallery {
+    height: 100vh;
+    width: 100%;
+    /* JS will calculate inner wrapper width */
+    overflow: hidden;
+    position: relative;
+    z-index: 5;
+}
+
+.horizontal-gallery-wrapper {
+    display: flex;
+    height: 100%;
+    will-change: transform;
+}
+
+.horizontal-gallery-slide {
+    width: 100vw;
+    height: 100vh;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.horizontal-gallery-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.img-holder {
+    width: 60vw;
+    height: 40vw;
+    max-height: 70vh;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.horizontal-gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.2);
+    /* For parallax effect inside */
+    will-change: transform;
+}
+
+.horizontal-gallery-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+/* --- SECTION 3: STACKING CARDS --- */
+#stacking-cards {
+    /* Height is controlled by ScrollTrigger pinning */
+    width: 100%;
+    background-color: #0a0a0a;
+    position: relative;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    z-index: 5;
+}
+
+.stacking-header {
+    text-align: center;
+    margin-bottom: 5vh;
+    font-size: 3rem;
+}
+
+.stacking-cards-container {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    /* Viewport for the cards */
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    position: absolute;
+    top: 0;
+    width: 80vw;
+    max-width: 600px;
+    height: 70vh;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    will-change: transform, filter;
+    transform-origin: top center;
+}
+
+.card-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-text {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 2;
+}
+
+/* --- SECTION 4: FOOTER REVEAL --- */
+#section-4 {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: 20;
+    /* Must be on top for reveal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-mask-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-mask-title {
+    font-size: 20vw;
+    font-weight: 900;
+    margin: 0;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.5);
+    position: relative;
+    z-index: 2;
+    will-change: color, mix-blend-mode;
+}
+
+.text-mask-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    z-index: 1;
+}
