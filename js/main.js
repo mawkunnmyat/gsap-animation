@@ -7,6 +7,8 @@ import { initWaveText } from './sections/waveText.js';
 import { initSticky } from './sections/sticky.js'; // New
 import { initStackingCards } from './sections/stacking.js';
 import { initKineticText } from './sections/kinetic.js';
+import { initParallaxColumns } from './sections/columns.js'; // New
+import { initHoverList } from './sections/hoverList.js';
 import { initFooterReveal } from './sections/footer.js';
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
@@ -24,6 +26,8 @@ const initApp = () => {
         initSticky();
         initStackingCards();
         initKineticText();
+        initParallaxColumns();
+        initHoverList();
         initFooterReveal();
     });
 

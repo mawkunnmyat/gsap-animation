@@ -132,4 +132,23 @@ npx serve .
 
 Feel free to fork and adapt this setup for your own portfolios, campaigns, and experimental landing pages.
 
+---
 
+### Live Demo
+
+- **Production**: `https://gsap-animation-psi-vert.vercel.app`
+
+### Section Overview
+
+- **Parallax Columns** – `js/sections/columns.js`: column-based parallax scroll section.
+- **Hover List** – `js/sections/hoverList.js`: interactive list with hover-driven motion.
+
+### Development Notes
+
+- Best experienced on modern desktop browsers with smooth scrolling enabled.
+- Animations are tuned for performance; avoid heavy DOM changes while scrolling.
+
+### Author & Contact
+
+- **Author**: mawkunnmyat
+- **Contact**: `mapoeeiphyu2017.miitinternship@gmail.com`

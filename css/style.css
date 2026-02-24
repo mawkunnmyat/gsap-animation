@@ -738,3 +738,89 @@ html, body {
         padding-bottom: 10vh;
     }
 }
+
+/* --- NEW: PARALLAX COLUMNS --- */
+#parallax-columns {
+    width: 100%;
+    height: 120vh;
+    /* Taller than screen */
+    background: #050505;
+    overflow: hidden;
+    position: relative;
+    padding: 10vh 2vw;
+    display: flex;
+    gap: 2vw;
+    z-index: 5;
+}
+
+.p-col {
+    width: 33.33%;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    will-change: transform;
+}
+
+/* Offset the middle column visually */
+.p-col:nth-child(2) {
+    transform: translateY(10%);
+}
+
+.p-img {
+    width: 100%;
+    height: 60vh;
+    /* Tall images */
+    object-fit: cover;
+    border-radius: 8px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.p-img:hover {
+    filter: grayscale(0%);
+}
+
+/* --- NEW: HOVER REVEAL LIST --- */
+#hover-list {
+    padding: 10vh 5vw;
+    background: #080808;
+    position: relative;
+    z-index: 5;
+    cursor: default;
+}
+
+.h-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.h-item {
+    font-size: 5vw;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 3vh 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #888;
+    cursor: pointer;
+    transition: color 0.3s;
+    position: relative;
+    z-index: 2;
+}
+
+/* Floating Image */
+.h-reveal-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    /* Center on mouse */
+    will-change: transform;
+}
